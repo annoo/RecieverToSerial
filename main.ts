@@ -1,6 +1,3 @@
-input.onButtonPressed(Button.A, function () {
-    serial.writeValue("number of Microbits", clients.length)
-})
 radio.onReceivedValue(function (name, value) {
     if (clients.indexOf(radio.receivedPacket(RadioPacketProperty.SerialNumber)) < 0) {
         clients.push(radio.receivedPacket(RadioPacketProperty.SerialNumber))
@@ -14,4 +11,5 @@ radio.setGroup(1)
 clients = []
 basic.forever(function () {
     basic.showNumber(clients.length)
+    serial.writeValue("number", clients.length)
 })
